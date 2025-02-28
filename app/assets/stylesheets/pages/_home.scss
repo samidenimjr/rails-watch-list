@@ -1,1 +1,50 @@
 // Specific CSS for your home-page
+body {
+  background: url('https://source.unsplash.com/1600x900/?cinema,movie') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Arial', sans-serif;
+  background-color: #d7c5e3;
+  color: #333;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.7); /* Dark overlay for better contrast */
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.9); /* Light background for readability */
+  border-radius: 10px;
+}
+
+h2 {
+  color: #c00f76;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-weight: bolder;
+  color: darkolivegreen;
+}
+
+.form-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item {
+  background: #fff;
+  border-left: 5px solid #13cdca;
+}
+
+.btn-danger {
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-danger:hover {
+  background: #dc3545;
+  transform: scale(1.05);
+}

@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <!-- List Title with Movie Icon -->
+  <h1 class="text-center text-primary">
+    🎥 <%= @list.name %>
+  </h1>
+
+  <!-- Bookmarks Section -->
+  <h2 class="mt-4 text-secondary">🎬 Bookmarked Movies</h2>
+
+  <% if @bookmarks.any? %>
+    <ul class="list-group">
+      <% @bookmarks.each do |bookmark| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center">
+            <% if bookmark.movie.poster_url.present? %>
+              <img src="<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %>" class="me-3 rounded" width="50" height="75">
+            <% else %>
+              <img src="https://via.placeholder.com/50x75?text=No+Poster" alt="No Poster" class="me-3 rounded">
+            <% end %>
+            <div>
+              <strong><%= bookmark.movie.title %></strong> <br>
+              <small class="text-muted">🎭 <%= bookmark.comment %></small>
+            </div>
+          </div>
+          <%= link_to '❌ Remove', list_bookmark_path(@list, bookmark), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Are you sure you want to delete this bookmark?" } %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="text-muted">📌 No movies added yet. Start adding now! 🎞️</p>
+  <% end %>
+
+  <!-- Add a Movie Form -->
+  <div class="card shadow mt-5 p-4">
+    <h2 class="text-primary text-center">➕ Add a Movie</h2>
+
+    <%= form_with model: [@list, Bookmark.new], local: true do |form| %>
+      <div class="mb-3">
+        <%= form.label :movie_id, "🎥 Select a movie", class: "form-label" %>
+        <%= form.collection_select :movie_id, Movie.all, :id, :title, {}, { class: "form-control" } %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :comment, "💬 Add a comment (min. 6 characters)", class: "form-label" %>
+        <%= form.text_area :comment, class: "form-control", placeholder: "Write something about this movie..." %>
+      </div>
+      <div class="text-center">
+        <%= form.submit '🎬 Add Movie', class: "btn btn-primary btn-lg" %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Back Button -->
+  <div class="text-center mt-4">
+    <%= link_to '⬅ Back to Lists', lists_path, class: "btn btn-outline-secondary" %>
+  </div>
+</div>

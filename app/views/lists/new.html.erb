@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <h1 class="text-primary text-center">Start a New Movie List</h1>
+
+  <div class="card shadow p-4 mt-4">
+    <%= form_with model: @list, local: true do |form| %>
+      <% if @list.errors.any? %>
+        <div class="alert alert-danger">
+          <h4><%= pluralize(@list.errors.count, "error") %> empêchent la soumission :</h4>
+          <ul>
+            <% @list.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :name, "Name of the list", class: "form-label" %>
+        <%= form.text_field :name, class: "form-control", placeholder: "Name of the list" %>
+      </div>
+
+      <div class="text-center">
+        <%= form.submit 'Start the list', class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="text-center mt-3">
+    <%= link_to '⬅ Back to the list', lists_path, class: "btn btn-outline-secondary" %>
+  </div>
+</div>
