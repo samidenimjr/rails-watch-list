@@ -3,8 +3,9 @@ body {
   background: url('https://source.unsplash.com/1600x900/?cinema,movie') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Arial', sans-serif;
-  background-color: #d7c5e3;
+  background-color: #b5b3b698;
   color: #333;
+  border-radius: 15px;
 }
 
 .overlay {
@@ -14,8 +15,8 @@ body {
 }
 
 .card {
-  background-color: rgba(255, 255, 255, 0.9); /* Light background for readability */
-  border-radius: 10px;
+  background-color: rgba(172, 167, 167, 0.9); /* Light background for readability */
+  border-radius: 20px;
 }
 
 h2 {
@@ -26,22 +27,26 @@ h2 {
 h1 {
   font-weight: bolder;
   color: darkolivegreen;
+  text-decoration-color: #333;
 }
 
 .form-container {
-  background: white;
+  background: rgb(173, 172, 172);
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
 }
 
 .list-group-item {
   background: #fff;
   border-left: 5px solid #13cdca;
+  border-radius: 15px;
 }
 
 .btn-danger {
   transition: all 0.3s ease-in-out;
+  border-radius: 15px;
 }
 
 .btn-danger:hover {

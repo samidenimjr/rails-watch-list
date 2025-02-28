@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <h2 class="text-warning text-center">🎥 Movies in This List</h2>
+
+  <% if @bookmarks.any? %>
+    <ul class="list-group mt-3">
+      <% @bookmarks.each do |bookmark| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center">
+            <!-- Movie Poster (Optional) -->
+            <% if bookmark.movie.poster_url.present? %>
+              <img src="<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %> poster" class="me-3 rounded" width="50">
+            <% end %>
+
+            <!-- Movie Title & Comment -->
+            <div>
+              <h5 class="mb-0"><%= bookmark.movie.title %></h5>
+              <p class="text-muted mb-0"><%= bookmark.comment %></p>
+            </div>
+          </div>
+
+          <!-- Delete Button -->
+          <%= link_to '❌ Remove', list_bookmark_path(bookmark.list, bookmark),
+                      method: :delete,
+                      class: "btn btn-danger btn-sm",
+                      data: { confirm: "Are you sure you want to remove this movie from the list?" } %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="text-center text-muted mt-3">No movies in this list yet. Add one below! 🎬</p>
+  <% end %>
+
+  <!-- Back Button -->
+  <div class="text-center mt-4">
+    <%= link_to '⬅ Back to Lists', lists_path, class: " align-self-start mt-2 btn btn-outline-light" %>
+  </div>
+</div>

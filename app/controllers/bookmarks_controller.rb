@@ -4,16 +4,17 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = @list.bookmarks.new(bookmark_params)
     if @bookmark.save
-      redirect_to @list, notice: 'Movie added'
+      redirect_to @list, notice: '✅ Movie added successfully!'
     else
-      redirect_to @list, alert: @bookmark.errors.full_messages.to_sentence
+      flash[:alert] = @bookmark.errors.full_messages.to_sentence
+      redirect_to @list
     end
   end
 
   def destroy
     @bookmark = @list.bookmarks.find(params[:id])
     if @bookmark.destroy
-      redirect_to @list, notice: 'Bookmark deleted'
+      redirect_to @list, notice: '🗑 Bookmark deleted!'
     else
       redirect_to @list, alert: @bookmark.errors.full_messages.to_sentence
     end

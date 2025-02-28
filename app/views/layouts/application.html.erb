@@ -1,16 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsWatchList</title>
+    <title>My Watch List</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <style>
+      /* Style for the entire page background */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-image: url('https://plus.unsplash.com/premium_photo-1664303124313-126bf7456982?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2luZW1hfGVufDB8fDB8fHww');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed; /* Keeps the image fixed while scrolling */
+        height: 100vh; /* Ensures the background covers the whole viewport */
+      }
+
+      /* Optional: Style for content to ensure text is readable */
+      .content {
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.7); /* Slightly transparent background for content */
+        border-radius: 8px;
+      }
+    </style>
   </head>
 
   <body>
     <%= yield %>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-success text-center">
+        <%= flash[:notice] %>
+      </div>
+    <% elsif flash[:alert] %>
+      <div class="alert alert-danger text-center">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
   </body>
 </html>
